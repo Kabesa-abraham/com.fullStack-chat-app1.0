@@ -3,7 +3,7 @@ import { axiosInstance } from "../lib/axios.js";
 import toast from "react-hot-toast";
 import {io} from 'socket.io-client'
 
-const URL_BASIQUE = import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
+const URL_BASIQUE = import.meta.env.MODE === "development" ? "http://localhost:5001/api" : "/api";
 
 export const useAuthStore = create((set,get) => ({
   authUser: null,
@@ -71,7 +71,7 @@ export const useAuthStore = create((set,get) => ({
     const formdataImg = new FormData();
     formdataImg.append('image',data);
     try { 
-      const res = await fetch(`${URL_BASIQUE}/api/upload/upload_image`,{
+      const res = await fetch(`${URL_BASIQUE}/upload/upload_image`,{
         method:'POST',
         headers:{ Accept:'application/json'},
         body:formdataImg
